@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   server:
-    image: fastapi-server:${APP_VERSION}
+    image: ${GITHUB_CONTAINER_REPO_SERVER}:${APP_VERSION}
     container_name: ${PROJECT_NAME}-server
     hostname: server
     restart: unless-stopped
