@@ -2,7 +2,7 @@ from elasticsearch import Elasticsearch
 
 class Search:
     def __init__(self, host="http://localhost:9200") -> None:
-        self.indx = "fastapi-react"
+        self.indx = "iris"
         self.es = Elasticsearch(host)
 
     def index(self, index, document):

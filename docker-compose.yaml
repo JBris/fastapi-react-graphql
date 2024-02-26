@@ -1,6 +1,27 @@
 version: "3.9"
 
 services:
+  server:
+    image: fastapi-server:${APP_VERSION}
+    container_name: ${PROJECT_NAME}-server
+    hostname: server
+    restart: unless-stopped
+    stop_grace_period: 10s
+    env_file: .env
+    command: gunicorn -b 0.0.0.0:3000 -w 4 -k uvicorn.workers.UvicornH11Worker main:app
+    build:
+      context: server
+      args:
+        PYTHON_TAG: $PYTHON_TAG
+        PYTHON_POETRY_VERSION: $PYTHON_POETRY_VERSION
+    environment:
+      ELASTICSEARCH_HOST: $ELASTICSEARCH_HOST
+      POSTGRES_DB_URL: $POSTGRES_DB_URL
+      REDIS_INTERNAL_HOST: $REDIS_INTERNAL_HOST
+      REDIS_INTERNAL_PORT: $REDIS_INTERNAL_PORT
+    ports:
+      - ${SERVER_PORT}:3000
+
   postgres:
     image: postgres:${POSTGRES_TAG}
     container_name: ${PROJECT_NAME}-postgres

@@ -61,3 +61,4 @@ class QueryResolver:
 
 		pred_tasks = get_predictions(task_list, Iris)
 		return pred_tasks
+	

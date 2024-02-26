@@ -2,7 +2,7 @@ import redis
 
 class Cache:
     def __init__(self, host='localhost', port=6379, db=0) -> None:
-        self.r = redis.Redis()
+        self.r = redis.Redis(host, port)
         self.k = "iris"
 
     def get(self, k):
