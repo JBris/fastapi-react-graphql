@@ -3,6 +3,10 @@ name: Server Docker Build
 on: 
   workflow_dispatch: {}
 
+permissions:
+  actions: write
+  packages: write
+  
 jobs:
   build-server:
     runs-on: ubuntu-latest
