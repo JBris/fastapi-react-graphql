@@ -2,6 +2,7 @@ import strawberry
 
 @strawberry.type
 class Iris:
+    id: int
     sepal_length: float | None
     sepal_width: float | None
     petal_length: float | None
@@ -10,5 +11,5 @@ class Iris:
 
 @strawberry.input
 class PaginationInput:
-    offset: int = 50
-    limit: int = 100
+    offset: int = 0
+    limit: int = 250

@@ -6,7 +6,7 @@ authors = ["James Bristow <jbris@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 numpy = "^1.26.4"
 plotly = "^5.19.0"
 pandas = "^2.2.1"
@@ -24,7 +24,7 @@ redis = "^5.0.1"
 elasticsearch = "^8.12.1"
 bokeh = "^3.3.4"
 python-decouple = "^3.8"
-psycopg2 = "^2.9.9"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]
