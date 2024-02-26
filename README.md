@@ -1,4 +1,4 @@
-# fastapi-react-tutorials
+# FastAPI React GraphQL
 
 [![pages-build-deployment](https://github.com/JBris/fastapi-react-graphql/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/JBris/fastapi-react-graphql/actions/workflows/pages/pages-build-deployment)
 [![CodeQL](https://github.com/JBris/fastapi-react-graphql/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)](https://github.com/JBris/fastapi-react-graphql/actions/workflows/github-code-scanning/codeql)
