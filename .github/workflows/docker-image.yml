@@ -1,0 +1,17 @@
+name: Server Docker Build
+
+on: 
+  workflow_dispatch: {}
+
+jobs:
+  build-server:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Login to GitHub Package Registry
+      uses: docker/login-action@v1
+      with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
