@@ -35,3 +35,5 @@ COPY ./ ./
 COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 EXPOSE 3000
+
+CMD ["gunicorn", "-b", "0.0.0.0:3000", "-w", "4", "-k", "uvicorn.workers.UvicornH11Worker", "main:app"]
