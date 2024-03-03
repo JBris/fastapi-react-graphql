@@ -5,14 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/",
   preview: {
-    port: 8080,
+    port: 5001,
     strictPort: true,
   },
   plugins: [react({
     include: "**/*.jsx",
   })],
   server: {
-    port: 8080,
+    port: 5001,
     strictPort: true,
     host: true,
     watch: {
