@@ -2,13 +2,6 @@ from fastapi import FastAPI
 from gql import graphql_app
 from fastapi.middleware.cors import CORSMiddleware
 
-origins = [
-    "http://localhost",
-    "localhost",
-    "http://localhost:3000",
-    "localhost:3000"
-]
-
 app = FastAPI()
 
 app.add_middleware(
