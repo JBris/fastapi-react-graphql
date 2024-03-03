@@ -8,3 +8,5 @@
 Example of a FastAPI and React.js app using GraphQL.
 
 Execute [deploy.sh](scripts/deploy.sh) to launch the app. You will need to have Docker installed.
+
+The Docker configuration can be found in [.env](.env).
