@@ -1,34 +1,27 @@
 import Select from "react-select";
-import { useState } from "react";
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
-
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { setX, setY } from "../../features/variables/relationshipSlice";
+import { setLimit } from "../../features/pagination/paginationSlice";
+import { config } from '../../config/config';
 
 export default function Sidebar() {
-    const [selectedOption, setSelectedOption] = useState("");
+    const options = config.IRIS_FIELDS;
 
-    const handlePredictorTypeSelect = (e) => {
-        console.log(e.value)
-        setSelectedOption(e.value);
-    };
+    const x = useSelector(state => state.relationship.x);
+    const y = useSelector(state => state.relationship.y);
+    const limit = useSelector(state => state.pagination.limit);
 
-    const handleResponseTypeSelect = (e) => {
-        console.log(e.value)
-        setSelectedOption(e.value);
-    };
+    const dispatch = useDispatch()
 
     return (
         <div id="sidebar" className="flex flex-col w-1/4 shadow-md ml-1 p-6">
 
             <div id="header-wrapper flex flex-col">
-                <h1 className="text-2xl mb-5">Visualise</h1>
+                <h1 className="text-2xl text-center">Visualise</h1>
             </div>
+
+            <div className="divider"></div>
 
             <div id="select-wrapper flex flex-col">
                 <Select
@@ -36,10 +29,10 @@ export default function Sidebar() {
                     placeholder="Predictor"
                     className="w-full max-w-sm m-2.5"
                     options={options}
-                    onChange={handlePredictorTypeSelect}
-                    value={options.find(function (option) {
-                        return option.value === selectedOption;
-                    })}
+                    onChange={
+                        e => dispatch(setX(e.value))
+                    }
+                    defaultValue={x}
                 />
 
                 <Select
@@ -47,20 +40,24 @@ export default function Sidebar() {
                     placeholder="Response"
                     className="w-full max-w-sm m-2.5"
                     options={options}
-                    onChange={handleResponseTypeSelect}
-                    value={options.find(function (option) {
-                        return option.value === selectedOption;
-                    })}
+                    onChange={
+                        e => dispatch(setY(e.value))
+                    }
+                    defaultValue={y}
                 />
-            </div>
 
-            <div id="confirm-wrapper flex flex-col">
-                <button className="btn w-1/4 bg-base-100 shadow-md mt-5 rounded-2xl">
-                    <FontAwesomeIcon
-                        icon={faCheck}
-                        size="2x"
-                    />
-                </button>
+                <input
+                    type="number"
+                    placeholder="Pagination Limit"
+                    className="input input-bordered w-full max-w-sm m-2.5"
+                    step="any"
+                    min="1"
+                    max="250"
+                    defaultValue={limit}
+                    onChange={
+                        e => dispatch(setLimit(e.target.value))
+                    }
+                />
             </div>
         </div >
     );

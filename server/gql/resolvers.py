@@ -44,7 +44,8 @@ class QueryResolver:
 			host=cache_host, port=cache_port
 		)
 
-		task_list = cache.get(cache.k)
+		cache_key = f"{cache.k}_{pagination.limit}"
+		task_list = cache.get(cache_key)
 
 		if task_list is None:
 			task_list = []
@@ -54,7 +55,7 @@ class QueryResolver:
 				task_list.append(task_dict)
 
 			cache.set(
-				cache.k, json.dumps(task_list)
+				cache_key, json.dumps(task_list)
 			)
 		else:
 			task_list = json.loads(task_list)
