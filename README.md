@@ -6,3 +6,5 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Example of a FastAPI and React.js app using GraphQL.
+
+Execute [deploy.sh](scripts/deploy.sh) to launch the app. You will need to have Docker installed.
